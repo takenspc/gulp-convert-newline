@@ -1,5 +1,8 @@
 # gulp-convert-newline
 
+[![Build Status](https://travis-ci.org/takenspc/gulp-convert-newline.svg?branch=0.0.1)](https://travis-ci.org/takenspc/gulp-convert-newline)
+[![Coverage Status](https://coveralls.io/repos/takenspc/gulp-convert-newline/badge.svg)](https://coveralls.io/r/takenspc/gulp-convert-newline)
+
 Gulp plugin that unifying newline characters to either `\n`,`\r\n`, or `\r`.
 
 ## Usage
