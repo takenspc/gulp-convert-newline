@@ -1,10 +1,10 @@
 "use strict";
-var assert = require("assert");
+var assert = require("power-assert");
 var path = require("path");
 var util = require("util");
 var es = require("event-stream");
 var gutil = require("gulp-util");
-var convertNewline = require("./");
+var convertNewline = require("../");
 
 //
 // const.
