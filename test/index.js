@@ -126,7 +126,7 @@ describe("gulp-convert-newline", function() {
 								throw err;
 							}
 							assert.ok(Buffer.isBuffer(actual));
-							var expected= expectedData[toNewline];
+							var expected = expectedData[toNewline];
 							assert.ok(bufferEquals(actual, expected));
 						}));
 					});
