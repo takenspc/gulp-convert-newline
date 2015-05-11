@@ -109,7 +109,7 @@ describe("gulp-convert-newline", function() {
 
 	describe("in stream mode (simple)", function() {
 		var testData = getStringTestData();
-		var references = getUTF8BufferTestData();
+		var expectedData = getUTF8BufferTestData();
 		var newlines = Object.keys(testData);
 		newlines.forEach(function(toNewline) {
 			newlines.forEach(function (fromNewline) {
@@ -121,13 +121,13 @@ describe("gulp-convert-newline", function() {
 						assert.strictEqual(file.relative, "file.txt");
 
 						// buffer the contents
-						file.contents.pipe(es.wait(function (err, data) {
+						file.contents.pipe(es.wait(function (err, actual) {
 							if (err) {
 								throw err;
 							}
-							assert.ok(Buffer.isBuffer(data));
-							var reference = references[toNewline];
-							assert.ok(bufferEquals(data, reference));
+							assert.ok(Buffer.isBuffer(actual));
+							var expected= expectedData[toNewline];
+							assert.ok(bufferEquals(actual, expected));
 						}));
 					});
 
@@ -163,8 +163,8 @@ describe("gulp-convert-newline", function() {
 								throw err;
 							}
 							assert.ok(Buffer.isBuffer(data));
-							var reference = testData[toNewline];
-							assert.ok(bufferEquals(data, reference));
+							var expected = testData[toNewline];
+							assert.ok(bufferEquals(data, expected));
 						}));
 					});
 
