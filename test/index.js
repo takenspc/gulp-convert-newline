@@ -2,6 +2,7 @@
 var assert = require("power-assert");
 var path = require("path");
 var util = require("util");
+var bufferEquals = require("buffer-equals");
 var es = require("event-stream");
 var gutil = require("gulp-util");
 var convertNewline = require("../");
@@ -89,7 +90,7 @@ describe("gulp-convert-newline", function() {
 					stream.on("data", function (file) {
 						assert.ok(file.isBuffer());
 						assert.strictEqual(file.relative, "file.txt");
-						assert.ok(testData[toNewline].equals(file.contents));
+						assert.ok(bufferEquals(file.contents, testData[toNewline]));
 					});
 
 					stream.on("end", done);
@@ -126,7 +127,7 @@ describe("gulp-convert-newline", function() {
 							}
 							assert.ok(Buffer.isBuffer(data));
 							var reference = references[toNewline];
-							assert.ok(data.equals(reference));
+							assert.ok(bufferEquals(data, reference));
 						}));
 					});
 
@@ -163,7 +164,7 @@ describe("gulp-convert-newline", function() {
 							}
 							assert.ok(Buffer.isBuffer(data));
 							var reference = testData[toNewline];
-							assert.ok(data.equals(reference));
+							assert.ok(bufferEquals(data, reference));
 						}));
 					});
 
