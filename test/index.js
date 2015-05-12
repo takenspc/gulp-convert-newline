@@ -23,6 +23,8 @@ function getStringTestData() {
 	};
 }
 
+// TODO
+/*
 function getUTF8BufferTestData() {
 	return {
 		cr: new Buffer("AAA\rBBB\rCCC\r"),
@@ -30,6 +32,7 @@ function getUTF8BufferTestData() {
 		lf: new Buffer("AAA\nBBB\nCCC\n")
 	};
 }
+*/
 
 function getShiftJISBufferTestData() {
 	// each hiragana letter is repeated 3 times.
