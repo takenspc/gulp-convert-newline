@@ -24,7 +24,7 @@
   "devDependencies": {
     "buffer-equals": "^1.0.3",
     "coveralls": "^2.11.2",
-    "eslint": "^0.20.0",
+    "eslint": "^0.21.0",
     "espower-loader": "^0.11.0",
     "event-stream": "^3.3.1",
     "intelli-espower-loader": "^0.7.0",
