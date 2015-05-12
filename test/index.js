@@ -23,17 +23,6 @@ function getStringTestData() {
 	};
 }
 
-// TODO
-/*
-function getUTF8BufferTestData() {
-	return {
-		cr: new Buffer("AAA\rBBB\rCCC\r"),
-		crlf: new Buffer("AAA\r\nBBB\r\nCCC\r\n"),
-		lf: new Buffer("AAA\nBBB\nCCC\n")
-	};
-}
-*/
-
 function getShiftJISBufferTestData() {
 	// each hiragana letter is repeated 3 times.
 	var HIRAGANA_LETTER_A = [0x82, 0xa0, 0x82, 0xa0, 0x82, 0xa0];
@@ -116,7 +105,7 @@ describe("gulp-convert-newline", function() {
 		newlines.forEach(function(toNewline) {
 			newlines.forEach(function (fromNewline) {
 				it(util.format("should convert from %s to %s", fromNewline, toNewline), function (done) {
-					var stream = convertNewline({newline: toNewline});
+					var stream = convertNewline({ newline: toNewline });
 
 					stream.on("data", function (file) {
 						assert.ok(file.isStream());
@@ -127,6 +116,7 @@ describe("gulp-convert-newline", function() {
 							if (err) {
 								throw err;
 							}
+							// input (string) -> converter (string) -> output (string)
 							var expected = testData[toNewline];
 							assert.strictEqual(actual, expected);
 						}));
@@ -152,7 +142,7 @@ describe("gulp-convert-newline", function() {
 		newlines.forEach(function(toNewline) {
 			newlines.forEach(function (fromNewline) {
 				it(util.format("should convert from %s to %s", fromNewline, toNewline), function (done) {
-					var stream = convertNewline({newline: toNewline, encoding: SHIFT_JIS});
+					var stream = convertNewline({ newline: toNewline, encoding: SHIFT_JIS });
 
 					stream.on("data", function (file) {
 						assert.ok(file.isStream());
@@ -163,7 +153,7 @@ describe("gulp-convert-newline", function() {
 							if (err) {
 								throw err;
 							}
-							// TODO Why is this buffer?
+							// input (buffer) -> converter (buffer -> string -> buffer) -> output (buffer)
 							assert.ok(Buffer.isBuffer(data));
 							var expected = testData[toNewline];
 							assert.ok(bufferEquals(data, expected));
