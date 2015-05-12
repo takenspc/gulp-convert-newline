@@ -7,17 +7,19 @@ Gulp plugin that unifying newline characters to either `\n`,`\r\n`, or `\r`.
 
 ## Usage
 
-	var gulp = require("gulp");
-	var convertEncoding = require("gulp-convert-newline");
-	
-	gulp.task("default", function () {
-		return gulp.src("src/file.txt")
-			.pipe(convertNewline({
-				newline: "crlf",
-				encoding: "shift_jis"
-			}))
-			.pipe(gulp.dest("dest"));
-	});
+```js
+var gulp = require("gulp");
+var convertEncoding = require("gulp-convert-newline");
+
+gulp.task("default", function () {
+	return gulp.src("src/file.txt")
+		.pipe(convertNewline({
+			newline: "crlf",
+			encoding: "shift_jis"
+		}))
+		.pipe(gulp.dest("dest"));
+});
+```
 
 ## API
 
