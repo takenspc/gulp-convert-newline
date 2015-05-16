@@ -42,6 +42,24 @@ function getShiftJISBufferTestData() {
 // Tests
 //
 describe("gulp-convert-newline", function() {
+	it("should handle null file gracefully", function(done) {
+		var stream = convertNewline();
+
+		stream.on("data", function(file) {
+			assert.ok(file.isNull());
+			assert.strictEqual(file.relative, "file.txt");
+		});
+
+		stream.on("end", done);
+
+		stream.write(new gutil.File({
+			base: __dirname,
+			path: path.join(__dirname, "file.txt"),
+			contents: null
+		}));
+		stream.end();
+	});
+
 	describe("in buffer mode (simple)", function() {
 		var testData = getStringTestData();
 		var newlines = Object.keys(testData);
