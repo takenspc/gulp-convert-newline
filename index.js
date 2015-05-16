@@ -6,15 +6,14 @@ var convertNewline = require("convert-newline");
 
 var PACKAGE_NAME = "gulp-convert-newline";
 
-module.exports = function (options) {
+module.exports = function(options) {
 	options = options || {};
 
 	var newline = options.newline || "lf";
 	var encoding = options.encoding;
 	var converter = convertNewline(newline, encoding);
 
-	return through.obj(function (file, enc, cb) {
-
+	return through.obj(function(file, enc, cb) {
 		if (file.isNull()) {
 			this.push(file);
 			cb();

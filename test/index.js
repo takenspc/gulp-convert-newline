@@ -42,16 +42,17 @@ function getShiftJISBufferTestData() {
 // Tests
 //
 describe("gulp-convert-newline", function() {
-
 	describe("in buffer mode (simple)", function() {
 		var testData = getStringTestData();
 		var newlines = Object.keys(testData);
 		newlines.forEach(function(toNewline) {
 			newlines.forEach(function(fromNewline) {
-				it(util.format("should convert from %s to %s", fromNewline, toNewline), function (done) {
-					var stream = convertNewline({ newline: toNewline });
+				it(util.format("should convert from %s to %s", fromNewline, toNewline), function(done) {
+					var stream = convertNewline({
+						newline: toNewline
+					});
 
-					stream.on("data", function (file) {
+					stream.on("data", function(file) {
 						assert.ok(file.isBuffer());
 						assert.strictEqual(file.relative, "file.txt");
 						assert.strictEqual(file.contents.toString(), testData[toNewline]);
@@ -76,10 +77,13 @@ describe("gulp-convert-newline", function() {
 		var newlines = Object.keys(testData);
 		newlines.forEach(function(toNewline) {
 			newlines.forEach(function(fromNewline) {
-				it(util.format("should convert from %s to %s", fromNewline, toNewline), function (done) {
-					var stream = convertNewline({ newline: toNewline, encoding: SHIFT_JIS });
+				it(util.format("should convert from %s to %s", fromNewline, toNewline), function(done) {
+					var stream = convertNewline({
+						newline: toNewline,
+						encoding: SHIFT_JIS
+					});
 
-					stream.on("data", function (file) {
+					stream.on("data", function(file) {
 						assert.ok(file.isBuffer());
 						assert.strictEqual(file.relative, "file.txt");
 						assert.ok(bufferEquals(file.contents, testData[toNewline]));
@@ -103,16 +107,18 @@ describe("gulp-convert-newline", function() {
 		var testData = getStringTestData();
 		var newlines = Object.keys(testData);
 		newlines.forEach(function(toNewline) {
-			newlines.forEach(function (fromNewline) {
-				it(util.format("should convert from %s to %s", fromNewline, toNewline), function (done) {
-					var stream = convertNewline({ newline: toNewline });
+			newlines.forEach(function(fromNewline) {
+				it(util.format("should convert from %s to %s", fromNewline, toNewline), function(done) {
+					var stream = convertNewline({
+						newline: toNewline
+					});
 
-					stream.on("data", function (file) {
+					stream.on("data", function(file) {
 						assert.ok(file.isStream());
 						assert.strictEqual(file.relative, "file.txt");
 
 						// buffer the contents
-						file.contents.pipe(es.wait(function (err, actual) {
+						file.contents.pipe(es.wait(function(err, actual) {
 							if (err) {
 								throw err;
 							}
@@ -140,16 +146,19 @@ describe("gulp-convert-newline", function() {
 		var testData = getShiftJISBufferTestData();
 		var newlines = Object.keys(testData);
 		newlines.forEach(function(toNewline) {
-			newlines.forEach(function (fromNewline) {
-				it(util.format("should convert from %s to %s", fromNewline, toNewline), function (done) {
-					var stream = convertNewline({ newline: toNewline, encoding: SHIFT_JIS });
+			newlines.forEach(function(fromNewline) {
+				it(util.format("should convert from %s to %s", fromNewline, toNewline), function(done) {
+					var stream = convertNewline({
+						newline: toNewline,
+						encoding: SHIFT_JIS
+					});
 
-					stream.on("data", function (file) {
+					stream.on("data", function(file) {
 						assert.ok(file.isStream());
 						assert.strictEqual(file.relative, "file.txt");
 
 						// buffer the contents
-						file.contents.pipe(es.wait(function (err, data) {
+						file.contents.pipe(es.wait(function(err, data) {
 							if (err) {
 								throw err;
 							}
