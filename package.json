@@ -1,6 +1,6 @@
 {
   "name": "gulp-convert-newline",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Gulp plugin that unifying newline characters to either \\n, \\r\\n, or \\r.",
   "homepage": "https://github.com/takenspc/gulp-convert-newline/",
   "author": "Takeshi Kurosawa <taken.spc@gmail.com>",
