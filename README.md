@@ -10,10 +10,11 @@ Gulp plugin that unifying newline characters to either `\n`,`\r\n`, or `\r`.
 ## Usage
 
 ```js
+"use strict";
 var gulp = require("gulp");
-var convertEncoding = require("gulp-convert-newline");
+var convertNewline = require("gulp-convert-newline");
 
-gulp.task("default", function () {
+gulp.task("default", function() {
 	return gulp.src("src/file.txt")
 		.pipe(convertNewline({
 			newline: "crlf",
